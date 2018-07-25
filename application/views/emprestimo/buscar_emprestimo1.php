@@ -1,4 +1,4 @@
-<?php
+<?php 
   if(!empty($emprestimo))  
  { 
      // echo '<pre>';
@@ -22,6 +22,7 @@
                               <th>Data fim</th>
                               <th>Setor</th>
                               <th>Situação</th>
+                              <th>Editar</th>
                               
               			</tr>
            
@@ -41,7 +42,8 @@
                         <td >'.date("d/m/Y", strtotime($emprestimo_item->data_fim)).'</td>
                         <td>'.$emprestimo_item->nome_setor.'</td>
                         <td>'.$emprestimo_item->situacao.'</td>
-                        
+                        <td><a href="<?php echo base_url();?>/emprestimo/editar/'.$emprestimo_item->id_emprestimo.'"  class="btn btn-secondary">Editar</a></td>
+                        <td><a href="" class="btn btn-secondary">Teste</a></td>
                         
                     </tr> 
                 

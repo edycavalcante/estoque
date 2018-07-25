@@ -206,17 +206,44 @@ class Emprestimo extends CI_Controller {
 
 	}
 	else{
-		 $data['emprestimo']= $this->emprestimo_model->buscar($this->input->get('buscar'));
-		 // $data['emprestimo']['url_editar']= site_url(self::$URL_EDITAR);
-		 // $data['emprestimo']['url_excluir'] = site_url(self::$URL_EXCLUIR);
+		 if(empty($this->input->get('buscar'))){
+		 	$data['emprestimo']= $this->emprestimo_model->buscar();
+		 } else {
+		 	$data['emprestimo']= $this->emprestimo_model->buscar($this->input->get('buscar'));
+		 	
+		 }
+
+
+		 
+
+		 if(!empty($data['emprestimo'])) {
+
+			 foreach ($data['emprestimo'] as $key => $emprestimo_item)    
+			 {   
+
+			 	//print_r($emprestimo_item->id_emprestimo);exit;
+
+			 	$data['emprestimo'][$key]->data_inicio = date("d/m/Y", strtotime($emprestimo_item->data_inicio));
+			 	$data['emprestimo'][$key]->data_fim = date("d/m/Y", strtotime($emprestimo_item->data_fim));
+			 	$data['emprestimo'][$key]->url_editar = site_url(self::$URL_EDITAR.$emprestimo_item->id_emprestimo);
+				$data['emprestimo'][$key]->url_excluir = site_url(self::$URL_EXCLUIR.$emprestimo_item->id_emprestimo);
+				//print_r($emprestimo_item->id_emprestimo);exit;
+
+			 }
+		} else{
+			$data['emprestimo'] = array();
+		 	$data['emprestimo']['error'] = 'Não existe empréstimo com esse nome.';
+		}
+
+
+		 	$this->output->set_content_type('application/json');
+       		$this->output->set_output(json_encode($data['emprestimo']));
+
 		
-		 // echo '<pre>';
-		 // echo var_dump($data);
-		 // echo '</pre>';
 		 
 
         
-        $this->load->view('emprestimo/buscar_emprestimo1.php',$data);
+        //$this->load->view('emprestimo/buscar_emprestimo1.php',$data);
 	}
 	}
 
