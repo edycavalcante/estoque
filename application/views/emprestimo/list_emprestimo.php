@@ -20,7 +20,7 @@
  
 </div>  
  <table class="table" id="listbase" >
-  <thead id="head_emprestimo">
+  <thead id="head_table">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Equipamento</th>
@@ -33,7 +33,7 @@
       <th scope="col">Excluir</th>
     </tr>
   </thead>
-  <tbody id="conteudo_emprestimo">
+  <tbody id="conteudo_table">
   	<?php foreach ($emprestimo as $emprestimo_item): ?>
   		<tr>
         <tr id="<?php echo $emprestimo_item['id_emprestimo']; ?>">
@@ -81,23 +81,23 @@
        $("#buscar").val();
        console.log(str);
 
-       $('tbody#conteudo_emprestimo').html('');
+       $('tbody#conteudo_table').html('');
 
        // if(str == "") {
               //$( "#txtHint" ).find('div.container').attr('hidden', 'true');
                // $('tbody#conteudo_emprestimo').html('');
        // }else {
-               $.get('<?php echo base_url() ?>/emprestimo/buscar?buscar='+str, function( data ){
+               $.get('<?php echo base_url('emprestimo/buscar?buscar=') ?>'+str, function( data ){
                 // $( "#txtHint" ).find('tbody#conteudo_emprestimo').html('');
                 //$( "#txtHint" ).find('div.container').removeAttr('hidden');
                   var conteudo = ''; 
                   if (data.error) {
                     //$('table#table').find('thead.conteudo_emprestimo_header').attr('hidden', 'true');
-                    $('#head_emprestimo').attr('hidden', 'true');
-                    $('tbody#conteudo_emprestimo').html('<b>' + data.error + '</b>');
+                    $('#head_table').attr('hidden', 'true');
+                    $('tbody#conteudo_table').html('<b>' + data.error + '</b>');
                     return false;
                   }
-                $('#head_emprestimo').removeAttr('hidden'); 
+                $('#head_table').removeAttr('hidden'); 
                 $.each(data, function(key, emprestimo_item){
                 
                     conteudo += '<tr>'; 
@@ -115,8 +115,8 @@
                 
 
                 });
-                   $('table#table').find('thead.conteudo_emprestimo_header').removeAttr('hidden');
-                   $('tbody#conteudo_emprestimo').append( conteudo );  
+                   
+                   $('tbody#conteudo_table').append( conteudo );  
             });
        // }
    });  

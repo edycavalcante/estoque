@@ -1,17 +1,19 @@
 <table class="table" id="listbase">
-  <thead>
+  <thead id="head_table">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Nome</th>
       <th scope="col">Editar</th>
+      <th scope="col">Conteúdo</th>
       <th scope="col">Excluir</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="conteudo_table">
   	<?php foreach ($local as $local_item): ?>
   		<tr>
   			<th scope="row"><?php echo $local_item['id_local']; ?></th>
   			<td><?php echo $local_item['nome_local']; ?></td>
+        <td><a href="<?php echo $local_item['url_detalhes']; ?>"  class="btn btn-secondary">Detalhes</a></td>
   			<td><a href="<?php echo $local_item['url_editar']; ?>"  class="btn btn-secondary">Editar</a></td>
         <td><a href="<?php echo $local_item['url_excluir']; ?>"  class="btn btn-secondary deletar_local" data-toggle="modal" data-target="#exampleModalCenter">Excluir</a></td>
   		</tr>

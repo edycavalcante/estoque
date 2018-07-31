@@ -17,9 +17,9 @@
           Estoque
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="<?php echo base_url(); ?>estoque">Cadastrar</a>
-          <a class="dropdown-item" href="<?php echo base_url(); ?>estoque/listar">Listar</a>
-          <a class="dropdown-item" href="<?php echo base_url(); ?>estoque/buscar">Buscar</a>
+          <a class="dropdown-item" href="<?php echo base_url('estoque'); ?>">Cadastrar</a>
+          <a class="dropdown-item" href="<?php echo base_url('estoque/listar'); ?>">Buscar</a>
+         <!-- <a class="dropdown-item" href="<?php echo base_url(); ?>estoque/buscar">Buscar</a> -->
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -28,8 +28,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="<?php echo base_url(); ?>emprestimo">Cadastrar</a>
-          <a class="dropdown-item" href="<?php echo base_url(); ?>emprestimo/listar">Listar</a>
-          <a class="dropdown-item" href="<?php echo base_url(); ?>emprestimo/buscar">Buscar</a>
+          <a class="dropdown-item" href="<?php echo base_url('emprestimo/listar'); ?>">Buscar</a>
+          <!-- <a class="dropdown-item" href="<?php echo base_url(); ?>emprestimo/buscar">Buscar</a> -->
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -38,8 +38,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="<?php echo base_url(); ?>equipamento">Cadastrar</a>
-          <a class="dropdown-item" href="<?php echo base_url(); ?>equipamento/listar">Listar</a>
-          <a class="dropdown-item" href="<?php echo base_url(); ?>equipamento/buscar">Buscar</a>
+          <a class="dropdown-item" href="<?php echo base_url('equipamento/listar'); ?>">Buscar</a>
+          <!-- <a class="dropdown-item" href="<?php echo base_url(); ?>equipamento/buscar">Buscar</a> -->
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -47,9 +47,9 @@
           Fabricante
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="<?php echo base_url(); ?>fabricante">Cadastrar</a>
-          <a class="dropdown-item" href="<?php echo base_url(); ?>fabricante/listar">Listar</a>
-          <a class="dropdown-item" href="<?php echo base_url(); ?>fabricante/buscar">Buscar</a>
+          <a class="dropdown-item" href="<?php echo base_url('fabricante'); ?>">Cadastrar</a>
+          <a class="dropdown-item" href="<?php echo base_url('fabricante/listar'); ?>">Buscar</a>
+          <!-- <a class="dropdown-item" href="<?php echo base_url(); ?>fabricante/buscar">Buscar</a> -->
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -58,8 +58,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="<?php echo base_url(); ?>setor">Cadastrar</a>
-          <a class="dropdown-item" href="<?php echo base_url(); ?>setor/listar">Listar</a>
-          <a class="dropdown-item" href="<?php echo base_url(); ?>setor/buscar">Buscar</a>
+          <a class="dropdown-item" href="<?php echo base_url('setor/listar'); ?>">Buscar</a>
+          <!-- <a class="dropdown-item" href="<?php echo base_url(); ?>setor/buscar">Buscar</a> -->
         </div>
       </li>
       <li class="nav-item dropdown">

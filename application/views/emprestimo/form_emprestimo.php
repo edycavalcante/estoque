@@ -1,3 +1,4 @@
+<?php echo validation_errors(); ?>
 <form  class="px-4 py-3" id="formemprestimo"  method="POST" <?php echo form_open('emprestimo/cadastrar');?> 
   
 

@@ -84,6 +84,7 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
-defined('BASECSS') 			   OR define('BASECSS', "http://".$_SERVER['HTTP_HOST'].'/estoque/assets/css/');
-defined('BASEIMG') 			   OR define('BASEIMG', "http://".$_SERVER['HTTP_HOST'].'/estoque/assets/images/');
-defined('BASEURL') 			   OR define('BASEURL', "http://".$_SERVER['HTTP_HOST'].'/estoque/index.php/');
+defined('BASEURL') 		   	   OR define('BASEURL', "http://".$_SERVER['HTTP_HOST'].'/estoque');
+defined('BASECSS') 			   OR define('BASECSS', BASEURL."/assets/css/");
+defined('BASEIMG') 			   OR define('BASEIMG', BASEURL."/assets/images/");
+//defined('BASEURL') 			   OR define('BASEURL', BASE_URL."/index.php/");

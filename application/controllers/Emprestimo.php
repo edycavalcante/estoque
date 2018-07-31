@@ -89,10 +89,10 @@ class Emprestimo extends CI_Controller {
 
 		if ($this->form_validation->run() === FALSE)
             {
-            	echo 'entrou';
+            	
                 $this->load->view('template/header');
                 $this->load->view('template/menu.php');
-                $this->load->view('equipamento/success.php');
+                $this->load->view('equipamento/form_emprestimo.php');
                 $this->load->view('template/footer');
 
         }
@@ -127,6 +127,8 @@ class Emprestimo extends CI_Controller {
 		if(!empty($join)){
 			foreach ($join as $key => $emp) {
 				$data['emprestimo'][$key] = $emp;
+				$data['emprestimo'][$key]['data_inicio'] = date("d/m/Y", strtotime($emp['data_inicio']));
+			 	$data['emprestimo'][$key]['data_fim'] = date("d/m/Y", strtotime($emp['data_fim']));
 				$data['emprestimo'][$key]['url_editar'] = site_url(self::$URL_EDITAR.$emp['id_emprestimo']);
 				$data['emprestimo'][$key]['url_excluir'] = site_url(self::$URL_EXCLUIR.$emp['id_emprestimo']);
 			}
@@ -151,17 +153,7 @@ class Emprestimo extends CI_Controller {
 		//$data['estoque'] = json_decode(json_encode($estoque),TRUE);
  		$data['local'] = $this->local_model->get_locais();
  		$data['setor'] = $this->setor_model->get_setors();	
- 		echo '<pre>';
-		var_dump($data['emprestimo']);
-	 	echo '</pre>';
-	 	echo '--------------------'.'</br>';
-
-	 // 	echo '<pre>';
-		// var_dump($data['estoque']);
-	 // 	echo '</pre>';
-	 	
-	 	
-	 	
+ 		
 	 	
 
 	 	
@@ -220,7 +212,10 @@ class Emprestimo extends CI_Controller {
 
 			 foreach ($data['emprestimo'] as $key => $emprestimo_item)    
 			 {   
-
+			 	// echo '<pre>';
+			 	// echo print_r($emprestimo_item);
+			 	// echo '</pre>';
+			 	
 			 	//print_r($emprestimo_item->id_emprestimo);exit;
 
 			 	$data['emprestimo'][$key]->data_inicio = date("d/m/Y", strtotime($emprestimo_item->data_inicio));

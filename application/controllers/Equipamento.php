@@ -236,7 +236,27 @@ class Equipamento extends CI_Controller {
 
 	}
 	else{
-		 $data['equipamento']= $this->equipamento_model->buscar($this->input->get('buscar'));
+		if(empty($this->input->get('buscar'))){
+			$data['equipamento']= $this->equipamento_model->buscar();
+		}else{
+			$data['equipamento'] = $this->equipamento_model->buscar($this->input->get('buscar'));
+		}
+
+		if(!empty($data['equipamento'])){
+			foreach ($data['equipamento'] as $key => $equipamento_item) {
+
+				$data['equipamento'][$key]->url_detalhes = site_url(self::$URL_DETALHES.$equipamento_item->id_equipamento);
+				$data['equipamento'][$key]->url_editar = site_url(self::$URL_EDITAR.$equipamento_item->id_equipamento);
+				$data['equipamento'][$key]->url_excluir = site_url(self::$URL_EXCLUIR.$equipamento_item->id_equipamento);
+				# code...
+			}
+		}else{
+			$data['equipamento'] = array();
+			$data['equipamento']['error'] = 'Não existe equipamento com esse nome';
+
+		}
+
+		 
 		 // $data['emprestimo']['url_editar']= site_url(self::$URL_EDITAR);
 		 // $data['emprestimo']['url_excluir'] = site_url(self::$URL_EXCLUIR);
 		
@@ -244,9 +264,10 @@ class Equipamento extends CI_Controller {
 		 // echo var_dump($data);
 		 // echo '</pre>';
 		 
-
+			$this->output->set_content_type('application/json');
+       		$this->output->set_output(json_encode($data['equipamento']));
         
-        $this->load->view('equipamento/buscar_equipamento1.php',$data);
+        
 	}
 	}
 

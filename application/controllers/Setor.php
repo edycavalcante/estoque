@@ -136,12 +136,10 @@ class Setor extends CI_Controller {
 
 
 	}
-
+	
 	public function excluir($id){
-
 		$this->setor_model->delete_setor_id($id);
 		$this->listar();
-
 	}
 
 	public function buscar(){
@@ -150,22 +148,49 @@ class Setor extends CI_Controller {
 		
 		$this->load->view('template/header.php');
 		$this->load->view('template/menu.php');
-        $this->load->view('setor/buscar_setor.php');  
+        $this->load->view('estoque/buscar_setor.php');  
         $this->load->view('template/footer.php'); 
+        
 
 	}
 	else{
-		 $data['setor']= $this->setor_model->buscar($this->input->get('buscar'));
-		 // $data['emprestimo']['url_editar']= site_url(self::$URL_EDITAR);
-		 // $data['emprestimo']['url_excluir'] = site_url(self::$URL_EXCLUIR);
+		 if(empty($this->input->get('buscar'))){
+		 	$data['setor']= $this->setor_model->buscar();
+		 } else {
+		 	$data['setor']= $this->setor_model->buscar($this->input->get('buscar'));
+		 	
+		 }
+		 
+		  if(!empty($data['setor'])) {
+
+			 foreach ($data['setor'] as $key => $setor_item)    
+			 {   
+			 	// echo '<pre>';
+			 	// echo print_r($emprestimo_item);
+			 	// echo '</pre>';
+			 	
+			 	//print_r($emprestimo_item->id_emprestimo);exit;
+
+			 	
+			 	$data['setor'][$key]->url_editar = site_url(self::$URL_EDITAR.$setor_item->id_setor);
+				$data['setor'][$key]->url_excluir = site_url(self::$URL_EXCLUIR.$setor_item->id_setor);
+				//print_r($emprestimo_item->id_emprestimo);exit;
+
+			 }
+		} else{
+			$data['setor'] = array();
+		 	$data['setor']['error'] = 'Não existe setor com esse nome.';
+		}
+
+
+		 	$this->output->set_content_type('application/json');
+       		$this->output->set_output(json_encode($data['setor']));
+
 		
-		 // echo '<pre>';
-		 // echo var_dump($data);
-		 // echo '</pre>';
 		 
 
         
-        $this->load->view('setor/buscar_setor1.php',$data);
+        //$this->load->view('emprestimo/buscar_emprestimo1.php',$data);
 	}
 	}
 

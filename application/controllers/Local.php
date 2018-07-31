@@ -138,6 +138,18 @@ class Local extends CI_Controller {
 
 	}
 
+	public function detalhes($id){
+		$data['detalhes'] = $this->local_model->detalhes_local_id($id);
+
+
+		$this->load->view('template/header');
+		$this->load->view('template/menu');
+		$this->load->view('local/detalhes_local.php', $data);
+		$this->load->view('template/footer');
+
+
+	}
+
 	public function buscar(){
 
 		if(is_null($this->input->get('buscar'))){

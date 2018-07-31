@@ -230,16 +230,43 @@ class Estoque extends CI_Controller {
 
 	}
 	else{
-		 $data['estoque']= $this->estoque_model->buscar($this->input->get('buscar'));
+		 if(empty($this->input->get('buscar'))){
+		 	$data['estoque']= $this->estoque_model->buscar();
+		 } else {
+		 	$data['estoque']= $this->estoque_model->buscar($this->input->get('buscar'));
+		 	
+		 }
 		 
+		  if(!empty($data['estoque'])) {
+
+			 foreach ($data['estoque'] as $key => $estoque_item)    
+			 {   
+			 	// echo '<pre>';
+			 	// echo print_r($emprestimo_item);
+			 	// echo '</pre>';
+			 	
+			 	//print_r($emprestimo_item->id_emprestimo);exit;
+
+			 	$data['estoque'][$key]->url_baixa = site_url(self::$URL_BAIXA.$estoque_item->id_estoque);
+			 	$data['estoque'][$key]->url_editar = site_url(self::$URL_EDITAR.$estoque_item->id_estoque);
+				$data['estoque'][$key]->url_excluir = site_url(self::$URL_EXCLUIR.$estoque_item->id_estoque);
+				//print_r($emprestimo_item->id_emprestimo);exit;
+
+			 }
+		} else{
+			$data['estoque'] = array();
+		 	$data['estoque']['error'] = 'Não existe estoque com esse nome.';
+		}
 
 
-		 // $data['emprestimo']['url_editar']= site_url(self::$URL_EDITAR);
-		 // $data['emprestimo']['url_excluir'] = site_url(self::$URL_EXCLUIR);
+		 	$this->output->set_content_type('application/json');
+       		$this->output->set_output(json_encode($data['estoque']));
+
 		
 		 
+
         
-        $this->load->view('estoque/buscar_estoque1.php',$data);
+        //$this->load->view('emprestimo/buscar_emprestimo1.php',$data);
 	}
 	}
 

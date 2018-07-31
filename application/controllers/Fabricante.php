@@ -147,22 +147,49 @@ class Fabricante extends CI_Controller {
 		
 		$this->load->view('template/header.php');
 		$this->load->view('template/menu.php');
-        $this->load->view('fabricante/buscar_fabricante.php');  
+        $this->load->view('estoque/buscar_fabricante.php');  
         $this->load->view('template/footer.php'); 
+        
 
 	}
 	else{
-		 $data['fabricante']= $this->fabricante_model->buscar($this->input->get('buscar'));
-		 // $data['emprestimo']['url_editar']= site_url(self::$URL_EDITAR);
-		 // $data['emprestimo']['url_excluir'] = site_url(self::$URL_EXCLUIR);
+		 if(empty($this->input->get('buscar'))){
+		 	$data['fabricante']= $this->fabricante_model->buscar();
+		 } else {
+		 	$data['fabricante']= $this->fabricante_model->buscar($this->input->get('buscar'));
+		 	
+		 }
+		 
+		  if(!empty($data['fabricante'])) {
+
+			 foreach ($data['fabricante'] as $key => $fabricante_item)    
+			 {   
+			 	// echo '<pre>';
+			 	// echo print_r($emprestimo_item);
+			 	// echo '</pre>';
+			 	
+			 	//print_r($emprestimo_item->id_emprestimo);exit;
+
+			 	
+			 	$data['fabricante'][$key]->url_editar = site_url(self::$URL_EDITAR.$fabricante_item->id_fabricante);
+				$data['fabricante'][$key]->url_excluir = site_url(self::$URL_EXCLUIR.$fabricante_item->id_fabricante);
+				//print_r($emprestimo_item->id_emprestimo);exit;
+
+			 }
+		} else{
+			$data['fabricante'] = array();
+		 	$data['fabricante']['error'] = 'Não existe fabricante com esse nome.';
+		}
+
+
+		 	$this->output->set_content_type('application/json');
+       		$this->output->set_output(json_encode($data['fabricante']));
+
 		
-		 // echo '<pre>';
-		 // echo var_dump($data);
-		 // echo '</pre>';
 		 
 
         
-        $this->load->view('fabricante/buscar_fabricante1.php',$data);
+        //$this->load->view('emprestimo/buscar_emprestimo1.php',$data);
 	}
 	}
 
