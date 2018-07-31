@@ -20,7 +20,7 @@
  
 </div>  
  <table class="table" id="listbase" >
-  <thead>
+  <thead id="head_emprestimo">
     <tr>
       <th scope="col">#</th>
       <th scope="col">Equipamento</th>
@@ -93,9 +93,11 @@
                   var conteudo = ''; 
                   if (data.error) {
                     //$('table#table').find('thead.conteudo_emprestimo_header').attr('hidden', 'true');
+                    $('#head_emprestimo').attr('hidden', 'true');
                     $('tbody#conteudo_emprestimo').html('<b>' + data.error + '</b>');
                     return false;
                   }
+                $('#head_emprestimo').removeAttr('hidden'); 
                 $.each(data, function(key, emprestimo_item){
                 
                     conteudo += '<tr>'; 
