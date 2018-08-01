@@ -38,15 +38,12 @@ class Local_model extends CI_Model{
 	}
 
 	public function get_detalhes_local_id($id){
-		$query = $this->db->
-				->select('*')
-				>join('equipamento', 'local.fk_equipamento_id = equipamento.id_equipamento')
-
-		$query = $this->db->select('*')->join('equipamento', 'baixa_estoque.fk_equipamento_id = equipamento.id_equipamento')->join('local','baixa_estoque.fk_local_id = local.id_local')->join('setor','baixa_estoque.fk_setor_id = setor.id_setor')->get_where('baixa_estoque', array('fk_equipamento_id' => $id));
+		
+		$query = $this->db->select('*')->join('equipamento', 'estoque_gerencia.fk_equipamento_id = equipamento.id_equipamento')->join('local','estoque_gerencia.fk_local_id = local.id_local')->get_where('estoque_gerencia', array('fk_local_id' => $id));
 		
 		
 
-		return $query->result_array();
+		return $query->result();
 
 	}
 

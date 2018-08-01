@@ -29,6 +29,7 @@ class Local extends CI_Controller {
 	// }
 	private static $URL_EDITAR= 'local/editar/';
 	private static $URL_EXCLUIR= 'local/excluir/';
+	private static $URL_DETALHES= 'local/detalhes/';
 
 	public function __construct(){
 			parent::__construct();
@@ -87,6 +88,7 @@ class Local extends CI_Controller {
 		if(!empty($local)){
 			foreach ($local as $key => $loc) {
 				$data['local'][$key] = $loc;
+				$data['local'][$key]['url_detalhes'] = site_url(self::$URL_DETALHES.$loc['id_local']);
 				$data['local'][$key]['url_editar'] = site_url(self::$URL_EDITAR.$loc['id_local']);
 				$data['local'][$key]['url_excluir'] = site_url(self::$URL_EXCLUIR.$loc['id_local']);
 			}
@@ -139,7 +141,12 @@ class Local extends CI_Controller {
 	}
 
 	public function detalhes($id){
-		$data['detalhes'] = $this->local_model->detalhes_local_id($id);
+		$data['detalhes'] = $this->local_model->get_detalhes_local_id($id);
+
+		  // echo '<pre>';
+ 		 //  echo print_r($data['detalhes']);
+  		//   echo '</pre>';
+    //       exit;
 
 
 		$this->load->view('template/header');

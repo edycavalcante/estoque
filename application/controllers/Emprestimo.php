@@ -65,16 +65,27 @@ class Emprestimo extends CI_Controller {
 
 	}
 
+	public function required_test(){
+		echo 'AAAAAAAAAA';
+		exit;
+	}
+
 	public function cadastrar(){	
 		$this->load->helper('form');
 		$this->load->library('form_validation');
+		// echo '<pre>';
+  //       		echo var_dump($this->form_validation->set_rules('setor','setor', 'required',array('required' => 'Teste error') ));
+  //       		echo '</pre>';
+		
+		// exit;
 
-		$this->form_validation->set_rules('equipamento','equipamento', 'required');
-		$this->form_validation->set_rules('date_inicio','date_inicio', 'required');
-		$this->form_validation->set_rules('date_fim','date_fim', 'required');
-		$this->form_validation->set_rules('setor','setor', 'required');
-		$this->form_validation->set_rules('quantidade','quantidade', 'required');
-		$this->form_validation->set_rules('situacao','situacao', 'required');
+
+		$this->form_validation->set_rules('equipamento','equipamento', 'required', array('required' => 'Teste error setor1'));
+		$this->form_validation->set_rules('date_inicio','date_inicio', 'required', array('required' => 'Teste error setor'));
+		$this->form_validation->set_rules('date_fim','date_fim', 'required', array('required' => 'Teste error setor'));
+		$this->form_validation->set_rules('setor','setor', 'required', array('required' => 'Teste error setor2'));
+		$this->form_validation->set_rules('quantidade','quantidade', 'required', array('required' => 'Teste error setor'));
+		$this->form_validation->set_rules('situacao','situacao', 'required', array('required' => 'Teste error setor'));
 
 		// $data = array('fk_equipamento_id' => $this->input->post('equipamento'),
   //       			'data_inicio' => $this->input->post('date_inicio'),
@@ -90,10 +101,9 @@ class Emprestimo extends CI_Controller {
 		if ($this->form_validation->run() === FALSE)
             {
             	
-                $this->load->view('template/header');
-                $this->load->view('template/menu.php');
-                $this->load->view('equipamento/form_emprestimo.php');
-                $this->load->view('template/footer');
+               
+                $this->index();
+               
 
         }
         else

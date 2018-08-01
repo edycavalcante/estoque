@@ -8,7 +8,7 @@
               <label class="input-group-text" for="inputGroupSelect01">Equipamento</label>
             </div>
           <select class="custom-select" id="inputGroupSelect01" name="equipamento">
-            <option selected>Escolha...</option>
+            <option selected value="">Escolha...</option>
             <?php foreach ($equipamento as $equipamento_item): ?>
             <option value="<?php echo $equipamento_item['id_equipamento'] ?>"> <?php echo $equipamento_item['nome_equipamento']; echo ' - '; echo $equipamento_item['patrimonio']; ?></option>  
             <?php endforeach ?>
@@ -22,7 +22,7 @@
               <label class="input-group-text" for="inputGroupSelect01">Setor</label>
             </div>
           <select class="custom-select" id="inputGroupSelect01" name="setor">
-            <option selected>Escolha...</option>
+            <option selected value="">Escolha...</option>
             <?php foreach ($setor as $setor_item): ?>
             <option value="<?php echo $setor_item['id_setor'] ?>"> <?php echo $setor_item['nome_setor']; echo ' - '; echo $setor_item['responsavel']; ?></option>  
             <?php endforeach ?>
