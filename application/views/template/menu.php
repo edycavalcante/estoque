@@ -79,6 +79,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <!-- <a class="dropdown-item" href="/codeigniter/usuario/">Cadastrar</a> -->
           <a class="dropdown-item" href="<?php echo base_url(); ?>usuario/listar">Listar</a>
+          <a class="dropdown-item" href="<?php echo base_url(); ?>usuario/backup">Download</a>
           <a class="dropdown-item" href="<?php echo base_url(); ?>usuario/logout">Deslogar</a>
           
           

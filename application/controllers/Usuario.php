@@ -227,6 +227,32 @@ class Usuario extends CI_Controller {
 
     }
 
+    public function backup(){
+    	
+
+    	$prefs = array(     
+    		'format'      => 'zip',             
+    		'filename'    => 'backup_estoque.sql'
+    	);
+
+    	$this->load->dbutil();  
+    	$backup = $this->dbutil->backup($prefs); 
+
+    	$db_name = 'backup-'. date("d/m/y") .'.zip';
+    	//$save = $db_name;
+
+    	$this->load->helper('file');
+    	write_file($db_name, $backup); 
+
+
+    	$this->load->helper('download');
+    	force_download($db_name, $backup);	
+
+
+    }
+
+
+
     public function usuariopg() {
  
        $config = array();
