@@ -9,8 +9,16 @@
         <a class="nav-link" href="./usuario/">Inicio</a>
       </li>
       
-      <li class="nav-item">
-        <a class="nav-link" href="">Relatório</a>
+      
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Equipamento
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="<?php echo base_url(); ?>equipamento">Cadastrar</a>
+          <a class="dropdown-item" href="<?php echo base_url('equipamento/listar'); ?>">Buscar</a>
+          <!-- <a class="dropdown-item" href="<?php echo base_url(); ?>equipamento/buscar">Buscar</a> -->
+        </div>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -32,16 +40,17 @@
           <!-- <a class="dropdown-item" href="<?php echo base_url(); ?>emprestimo/buscar">Buscar</a> -->
         </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Equipamento
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Local
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="<?php echo base_url(); ?>equipamento">Cadastrar</a>
-          <a class="dropdown-item" href="<?php echo base_url('equipamento/listar'); ?>">Buscar</a>
-          <!-- <a class="dropdown-item" href="<?php echo base_url(); ?>equipamento/buscar">Buscar</a> -->
+          <a class="dropdown-item" href="<?php echo base_url(); ?>local">Cadastrar</a>
+          <a class="dropdown-item" href="<?php echo base_url(); ?>local/listar">Listar</a>
+          <a class="dropdown-item" href="<?php echo base_url(); ?>local/buscar">Buscar</a>
         </div>
       </li>
+     
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Fabricante
@@ -62,15 +71,8 @@
           <!-- <a class="dropdown-item" href="<?php echo base_url(); ?>setor/buscar">Buscar</a> -->
         </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Local
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="<?php echo base_url(); ?>local">Cadastrar</a>
-          <a class="dropdown-item" href="<?php echo base_url(); ?>local/listar">Listar</a>
-          <a class="dropdown-item" href="<?php echo base_url(); ?>local/buscar">Buscar</a>
-        </div>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo base_url('relatorio/'); ?>">Relatório</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
