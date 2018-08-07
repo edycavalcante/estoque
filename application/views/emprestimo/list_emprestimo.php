@@ -1,5 +1,5 @@
 
-<div  id="buscarbase">  </div>
+<div  id="buscarbase"> 
  <!-- search box container starts  -->
  
  <div class="buscar" >
@@ -73,7 +73,7 @@
   </div>
 </div>
 
-
+ </div>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
     $("#buscar").keyup(function(){

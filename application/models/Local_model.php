@@ -47,7 +47,7 @@ class Local_model extends CI_Model{
 
 	}
 
-	public function buscar($buscar){
+	public function buscar($buscar = null){
         
         $query = $this
                 ->db

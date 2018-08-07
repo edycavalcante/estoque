@@ -46,8 +46,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="<?php echo base_url(); ?>local">Cadastrar</a>
-          <a class="dropdown-item" href="<?php echo base_url(); ?>local/listar">Listar</a>
-          <a class="dropdown-item" href="<?php echo base_url(); ?>local/buscar">Buscar</a>
+          <a class="dropdown-item" href="<?php echo base_url('local/listar'); ?>">Buscar</a>
+          
         </div>
       </li>
      

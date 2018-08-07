@@ -168,17 +168,24 @@ class Local extends CI_Controller {
 
 	}
 	else{
-		 $data['local']= $this->local_model->buscar($this->input->get('buscar'));
-		 // $data['emprestimo']['url_editar']= site_url(self::$URL_EDITAR);
-		 // $data['emprestimo']['url_excluir'] = site_url(self::$URL_EXCLUIR);
+		if (empty($this->input->get('buscar'))) {
+			$data['local'] = $this->local_model->buscar($this->input->get('buscar'));
+		} else {
+			$data['local'] = $this->local_model->buscar($this->input->get('buscar'));
+		}
+		if (!empty($data['local'])) {
+			foreach ($data['local'] as $key => $local_item) {
+				$data['local'][$key]->url_detalhes = site_url(self::$URL_DETALHES.$local_item->id_local);
+				$data['local'][$key]->url_editar = site_url(self::$URL_EDITAR.$local_item->id_local);
+				$data['local'][$key]->url_excluir = site_url(self::$URL_EXCLUIR.$local_item->id_local);
+			}
+		} else {
+			$data['local'] = array();
+		 	$data['local']['error'] = 'Não existe local com esse nome.';
+		}
 		
-		 // echo '<pre>';
-		 // echo var_dump($data);
-		 // echo '</pre>';
-		 
-
-        
-        $this->load->view('local/buscar_local1.php',$data);
+			$this->output->set_content_type('application/json');
+       		$this->output->set_output(json_encode($data['local']));
 	}
 	}
 

@@ -147,7 +147,7 @@ class Fabricante extends CI_Controller {
 		
 		$this->load->view('template/header.php');
 		$this->load->view('template/menu.php');
-        $this->load->view('estoque/buscar_fabricante.php');  
+        $this->load->view('fabricante/buscar_fabricante.php');  
         $this->load->view('template/footer.php'); 
         
 
