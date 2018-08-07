@@ -29,4 +29,14 @@
 </div>
 </div>
 
+<div id="relatorio_baixa" >
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Baixa</span>
+    </div>
+    <input type="date" id="buscar_baixa" aria-label="Baixa" class="form-control" placeholder="">
+    
+</div>
+</div>
+
 </div>
