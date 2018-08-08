@@ -48,6 +48,91 @@ class Equipamento extends CI_Controller {
 
 
 	}
+	public function imprimir()
+	{
+	// 	$mpdf = new \Mpdf\mPDF();
+	// // Ao invés de imprimir a view 'welcome_message' na tela, passa o código
+	// // HTML dela para a variável $html
+	// $html = $this->load->view('equipamento/list_equipamento.php','',TRUE);
+	// // Define um Cabeçalho para o arquivo PDF
+	// $mpdf->SetHeader('Gerando PDF no CodeIgniter com a biblioteca mPDF');
+	// // Define um rodapé para o arquivo PDF, nesse caso inserindo o número da
+	// // página através da pseudo-variável PAGENO
+	// $mpdf->SetFooter('{PAGENO}');
+	// // Insere o conteúdo da variável $html no arquivo PDF
+	// //$mpdf->writeHTML($html);
+	// // Cria uma nova página no arquivo
+	// $mpdf->AddPage();
+	// // Insere o conteúdo na nova página do arquivo PDF
+	// $mpdf->WriteHTML('<p><b>Minha nova página no arquivo PDF</b></p>');
+	// // Gera o arquivo PDF
+	// $mpdf->Output();
+
+		if(is_null($this->input->get('buscar_imprimir'))){
+			
+			$this->load->view('template/header.php');
+			$this->load->view('template/menu.php');
+			$this->load->view('equipamento/buscar_equipamento.php');  
+			$this->load->view('template/footer.php'); 
+
+		}
+		else{
+			if(empty($this->input->get('buscar_imprimir'))){
+				$data['equipamento']= $this->equipamento_model->buscar();
+			}else{
+				$data['equipamento'] = $this->equipamento_model->buscar($this->input->get('buscar_imprimir'));
+			}
+$mpdf = new \Mpdf\mPDF();
+			if(!empty($data['equipamento'])){
+				$mpdf = new \Mpdf\mPDF();
+	// Ao invés de imprimir a view 'welcome_message' na tela, passa o código
+	// HTML dela para a variável $html
+	$html = $this->load->view('equipamento/list_equipamento.php','',TRUE);
+	// Define um Cabeçalho para o arquivo PDF
+	$mpdf->SetHeader('Gerando PDF no CodeIgniter com a biblioteca mPDF');
+	// Define um rodapé para o arquivo PDF, nesse caso inserindo o número da
+	// página através da pseudo-variável PAGENO
+	$mpdf->SetFooter('{PAGENO}');
+	// Insere o conteúdo da variável $html no arquivo PDF
+	//$mpdf->writeHTML($html);
+	// Cria uma nova página no arquivo
+	$mpdf->AddPage();
+	// Insere o conteúdo na nova página do arquivo PDF
+	$text = '';
+				foreach ($data['equipamento'] as $key => $equipamento_item) {
+
+					$text .='<p><b>' .$data['equipamento'][$key]->url_detalhes = site_url(self::$URL_DETALHES.$equipamento_item->id_equipamento) . '</b></p>';
+					$text .='<p><b>' .$data['equipamento'][$key]->url_editar = site_url(self::$URL_EDITAR.$equipamento_item->id_equipamento) . '</b></p>';
+					$text .='<p><b>' .$data['equipamento'][$key]->url_excluir = site_url(self::$URL_EXCLUIR.$equipamento_item->id_equipamento) . '</b></p>';
+					# code...
+				}
+	$mpdf->WriteHTML($text);
+					// Gera o arquivo PDF
+	$mpdf->Output();
+			}else{
+				// $data['equipamento'] = array();
+				// $data['equipamento']['error'] = 'Não existe equipamento com esse nome';
+	
+	$mpdf->WriteHTML('<p><b>Não existe equipamento com esse nome</b></p>');
+	$mpdf->Output();
+
+			}
+			return;
+
+
+			 // $data['emprestimo']['url_editar']= site_url(self::$URL_EDITAR);
+			 // $data['emprestimo']['url_excluir'] = site_url(self::$URL_EXCLUIR);
+			
+			 // echo '<pre>';
+			 // echo var_dump($data);
+			 // echo '</pre>';
+
+			// $this->output->set_content_type('application/json');
+			// $this->output->set_output(json_encode($data['equipamento']));
+
+
+		}
+	}
 
 
 	public function index(){

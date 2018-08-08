@@ -19,6 +19,7 @@
  
 </div>  
 
+<input type="button" name="Imprimir" id="botao_imprimir">
 
 <table class="table" id="listbase">
   <thead id="head_table">
@@ -82,6 +83,14 @@
       $('#exampleModalCenter').find('#btn_delete_modal').attr('href', link_delete);
       console.log(id_usuario);
     })
+
+    $("#botao_imprimir").click(function(){
+      var str =
+       $("#buscar").val();
+
+        window.location.replace('<?php echo base_url('equipamento/imprimir?buscar_imprimir=') ?>'+str);
+    });
+
     $("#buscar").keyup(function(){
        var str =
        $("#buscar").val();
