@@ -19,7 +19,8 @@
  
 </div>  
 
-<input type="button" name="Imprimir" id="botao_imprimir">
+
+
 
 <table class="table" id="listbase">
   <thead id="head_table">
@@ -51,6 +52,8 @@
 
   </tbody>
 </table>
+
+<button name="Imprimir" id="botao_imprimir" class="btn btn-secondary" type="submit">Imprimir</button>
 
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -88,7 +91,8 @@
       var str =
        $("#buscar").val();
 
-        window.location.replace('<?php echo base_url('equipamento/imprimir?buscar_imprimir=') ?>'+str);
+        // window.location.replace('<?php echo base_url('equipamento/imprimir?buscar_imprimir=') ?>'+str);
+        window.open('<?php echo base_url('equipamento/imprimir?buscar_imprimir=') ?>'+str);
     });
 
     $("#buscar").keyup(function(){

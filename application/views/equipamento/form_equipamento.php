@@ -1,10 +1,15 @@
 
 	<form  class="px-4 py-3" id="formequipamento"  method="POST" <?php echo form_open('equipamento/cadastrar'); ?>
-             	<div class="form-group" >
-                <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" >
+		<?php echo validation_errors(); ?>
+             	
+              	<div class="input-group">
+              		<div class="input-group-prepend">
+              			<span class="input-group-text">Nome</span>
+              		</div>
+              		<input type="text" id="nome" name="nome" aria-label="Equipamento" class="form-control" placeholder="Nome equipamento">
+
               	</div>
-              
+
 
           <div class="input-group mb-3">
   					<div class="input-group-prepend">
@@ -37,7 +42,7 @@ document.getElementById('tipo').addEventListener('change', function () {
     					<label class="input-group-text" for="inputGroupSelect01">Fabricante</label>
   					</div>
 					<select class="custom-select" id="inputGroupSelect01" name="fabricante">
-						<option selected>Escolha...</option>
+						<option selected value="">Escolha...</option>
 						<?php foreach ($fabricante as $fabricante_item): ?>
 						<option value="<?php echo $fabricante_item['id_fabricante'] ?>"> <?php echo $fabricante_item['nome_fabricante']?></option>	
 						<?php endforeach ?>

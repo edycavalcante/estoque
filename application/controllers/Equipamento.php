@@ -89,7 +89,7 @@ $mpdf = new \Mpdf\mPDF();
 	// HTML dela para a variável $html
 	$html = $this->load->view('equipamento/list_equipamento.php','',TRUE);
 	// Define um Cabeçalho para o arquivo PDF
-	$mpdf->SetHeader('Gerando PDF no CodeIgniter com a biblioteca mPDF');
+	$mpdf->SetHeader('Estoque CMSI - ');
 	// Define um rodapé para o arquivo PDF, nesse caso inserindo o número da
 	// página através da pseudo-variável PAGENO
 	$mpdf->SetFooter('{PAGENO}');
@@ -98,14 +98,47 @@ $mpdf = new \Mpdf\mPDF();
 	// Cria uma nova página no arquivo
 	$mpdf->AddPage();
 	// Insere o conteúdo na nova página do arquivo PDF
-	$text = '';
-				foreach ($data['equipamento'] as $key => $equipamento_item) {
+	$text1 = '
+	<table class="table" style="text-align: center;border: 1px solid black;margin: 0 auto;border-collapse: collapse;
+    width: 100%;">
+		<thead>
+		<tr>
+			<th>NOME</th>
+			<th>TIPO</th>
+			<th>PATRIMÔNIO</th>
+			<th>FABRICANTE</th>
+		</tr>
+		</thead>
+			
+		<tbody>
 
-					$text .='<p><b>' .$data['equipamento'][$key]->url_detalhes = site_url(self::$URL_DETALHES.$equipamento_item->id_equipamento) . '</b></p>';
-					$text .='<p><b>' .$data['equipamento'][$key]->url_editar = site_url(self::$URL_EDITAR.$equipamento_item->id_equipamento) . '</b></p>';
-					$text .='<p><b>' .$data['equipamento'][$key]->url_excluir = site_url(self::$URL_EXCLUIR.$equipamento_item->id_equipamento) . '</b></p>';
+	';
+	$text = '<table class="table" id="listbase" style="text-align: center;border-collapse: collapse;border:1px solid black;
+    width: 100%;">
+  <thead id="head_table">
+    <tr style="border:1px solid black;border-collapse:collapse;">
+      
+      <th scope="col" style="border:1px solid black;border-collapse:collapse;">NOME</th>
+      <th scope="col" style="border:1px solid black;border-collapse:collapse;">TIPO</th>
+      <th scope="col" style="border:1px solid black;border-collapse:collapse;">PATRIMÔNIO</th>
+      <th scope="col" style="border:1px solid black;border-collapse:collapse;">FABRICANTE</th>
+    </tr>
+  </thead>
+  <tbody id="conteudo_table">';
+				foreach ($data['equipamento'] as $key => $equipamento_item) {
+					$text .= '<tr style="border:1px solid black;border-collapse:collapse;">';
+						$text .='<td style="border:1px solid black;border-collapse:collapse;">'.$data['equipamento'][$key]->nome_equipamento.'</td>';
+						$text .='<td style="border:1px solid black;border-collapse:collapse;">'.$data['equipamento'][$key]->tipo.'</td>';
+						$text .='<td style="border:1px solid black;border-collapse:collapse;">'.$data['equipamento'][$key]->patrimonio.'</td>';
+						$text .='<td style="border:1px solid black;border-collapse:collapse;">'.$data['equipamento'][$key]->nome_fabricante.'</td>';
+					$text .= '</tr>';
 					# code...
 				}
+	$text .= '</tbody></table>';
+	// echo '<pre>';
+	// var_dump($text);
+	// echo '</pre>';
+	// exit;
 	$mpdf->WriteHTML($text);
 					// Gera o arquivo PDF
 	$mpdf->Output();
@@ -157,16 +190,15 @@ $mpdf = new \Mpdf\mPDF();
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('nome','nome', 'required');
-		$this->form_validation->set_rules('tipo','tipo', 'required');
-		$this->form_validation->set_rules('fabricante','fabricante', 'required');
+		$this->form_validation->set_rules('nome','nome', 'required',array('required' => 'Informe nome do equipamento1'));
+		$this->form_validation->set_rules('tipo','tipo', 'required',array('required' => 'Informe tipo do equipamento'));
+		$this->form_validation->set_rules('fabricante','fabricante', 'required',array('required' => 'Informe fabricante do equipamento'));
 		
 		if ($this->form_validation->run() === FALSE)
             {
-                $this->load->view('template/header');
-                $this->load->view('template/menu.php');
-                $this->load->view('equipamento/form_equipamento');
-                $this->load->view('template/footer');
+               
+                $this->index();
+               
 
         }
         else
