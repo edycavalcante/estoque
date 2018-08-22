@@ -2295,14 +2295,12 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 						$s .= $pb['clippath'] . "\n";
 					}
 					$s .= 'q ' . $this->SetFColor($pb['col'], true) . "\n";
-					// if ($pb['col']{0} == 5) { // RGBa
-					if ($pb['col'] == 5) { // RGBa
+					if ($pb['col']{0} == 5) { // RGBa
 						$s .= $this->SetAlpha(ord($pb['col']{4}) / 100, 'Normal', true, 'F') . "\n";
-					// } elseif ($pb['col']{0} == 6) { // CMYKa
-					} elseif ($pb['col'] == 6) { // CMYKa	
+					} elseif ($pb['col']{0} == 6) { // CMYKa
 						$s .= $this->SetAlpha(ord($pb['col']{5}) / 100, 'Normal', true, 'F') . "\n";
 					}
-					// $s .= sprintf('%.3F %.3F %.3F %.3F re f Q', $pb['x'] * Mpdf::SCALE, ($this->h - $pb['y']) * Mpdf::SCALE, $pb['w'] * Mpdf::SCALE, -$pb['h'] * Mpdf::SCALE) . "\n"
+					$s .= sprintf('%.3F %.3F %.3F %.3F re f Q', $pb['x'] * Mpdf::SCALE, ($this->h - $pb['y']) * Mpdf::SCALE, $pb['w'] * Mpdf::SCALE, -$pb['h'] * Mpdf::SCALE) . "\n";
 					if (isset($pb['clippath']) && $pb['clippath']) {
 						$s .= 'Q' . "\n";
 					}
