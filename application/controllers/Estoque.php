@@ -65,16 +65,13 @@ class Estoque extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('equipamento','equipamento', 'required');
-		$this->form_validation->set_rules('local','local', 'required');
-		$this->form_validation->set_rules('quantidade','quantidade', 'required');
+		$this->form_validation->set_rules('equipamento','equipamento','required',array('required' => 'Informe o equipamento'));
+		$this->form_validation->set_rules('local','local','required',array('required' => 'Informe o local'));
+		$this->form_validation->set_rules('quantidade','quantidade','required',array('required' => 'Informe a quantidade'));
 
 		if ($this->form_validation->run() === FALSE)
             {
-                $this->load->view('template/header');
-                $this->load->view('template/menu.php');
-                $this->load->view('estoque/form_estoque.php');
-                $this->load->view('template/footer');
+                $this->index();
 
         }
         else

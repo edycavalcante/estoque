@@ -12,7 +12,8 @@
     </tr>
   </thead>
   <tbody>
-  	<?php foreach ($detalhes as $detalhes_item): ?>
+  
+   	<?php foreach ($detalhes as $detalhes_item): ?>
   		<tr>
   			<th scope="row"><?php echo $detalhes_item['id_baixa']; ?></th>
   			<td><?php echo $detalhes_item['nome_equipamento']; ?></td>

@@ -182,7 +182,7 @@ class Equipamento extends CI_Controller {
 		$this->load->view('template/menu.php');
 		$this->load->view('equipamento/form_equipamento.php', $data);
 		$this->load->view('template/footer.php');
-		$this->pagination->create_links();
+		//$this->pagination->create_links();
 	}
 
 	public function cadastrar()
@@ -191,7 +191,7 @@ class Equipamento extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 
-		$this->form_validation->set_rules('nome','nome', 'required',array('required' => 'Informe nome do equipamento1'));
+		$this->form_validation->set_rules('nome','nome', 'required',array('required' => 'Informe nome do equipamento'));
 		$this->form_validation->set_rules('tipo','tipo', 'required',array('required' => 'Informe tipo do equipamento'));
 		$this->form_validation->set_rules('fabricante','fabricante', 'required',array('required' => 'Informe fabricante do equipamento'));
 		
@@ -246,8 +246,21 @@ class Equipamento extends CI_Controller {
 
 	public function detalhes($id){
 		$data['detalhes'] = $this->estoque_model->get_detalhes_baixa_id($id);
+		
+		
+		if(!empty($data['detalhes'])){
+			foreach ($data['detalhes'] as $key => $emp ) {
+				$data['detalhes'][$key] = $emp;
+				$data['detalhes'][$key]['data_baixa'] = date("d/m/Y", strtotime($emp['data_baixa']));
+			 	
+			}
+			
+			
+			
+		}
+
 		// echo '<pre>';
-		// echo print_r($data['detalhes']);
+		// echo var_dump($data);
 		// echo '</pre>';
 		// exit;
 		$this->load->view('template/header.php');

@@ -2,7 +2,7 @@
 	<form  class="px-4 py-3" id="formequipamento"  method="POST" <?php echo form_open('equipamento/cadastrar'); ?>
 		<?php echo validation_errors(); ?>
              	
-              	<div class="input-group">
+              	<div class="input-group mb-3">
               		<div class="input-group-prepend">
               			<span class="input-group-text">Nome</span>
               		</div>
@@ -33,9 +33,17 @@ document.getElementById('tipo').addEventListener('change', function () {
 
 
 				<div class="form-group"  id="hidden_div" style="display: none;">
+          <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Patrimonio</span>
+                  </div>
+                  <input type="number" id="patrimonio" name="patrimonio" aria-label="Equipamento" class="form-control" placeholder="Patrimônio">
+        </div>
+      </div>
+               <!--  </div>
                 <label for="nome">Patrimônio</label>
                 <input type="number" class="form-control" id="nome" name="patrimonio" placeholder="Patrimonio">
-              	</div>
+              	</div> -->
 				
               	<div class="input-group mb-3">
   					<div class="input-group-prepend">
