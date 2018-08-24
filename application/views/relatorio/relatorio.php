@@ -8,8 +8,15 @@
     <input type="text" id="buscar_equipamento" aria-label="Equipamento" class="form-control" placeholder="Busque equipamento">
 </div>
 
+
 </div>
-  <div id="relatorio_emprestimo" >
+
+<button name="Buscar" id="buscar_relatorio" class="btn btn-secondary" type="submit">Buscar</button>
+
+</div>
+
+<div  id="buscarbase1"> 
+   <div id="relatorio_emprestimo" >
   <div class="input-group">
     <div class="input-group-prepend">
       <span class="input-group-text">Empréstimo</span>
@@ -19,7 +26,11 @@
 </div>
 </div>
 
-<div id="relatorio_local" >
+</div>
+ 
+<div  id="buscarbase1"> 
+
+  <div id="relatorio_local" >
   <div class="input-group">
     <div class="input-group-prepend">
       <span class="input-group-text">Local</span>
@@ -28,6 +39,11 @@
     
 </div>
 </div>
+
+</div>
+
+
+<div  id="buscarbase1"> 
 
 <div id="relatorio_baixa" >
   <div class="input-group">
