@@ -15,7 +15,7 @@
 
 </div>
 
-<div  id="buscarbase1"> 
+<div  id="buscarbase"> 
    <div id="relatorio_emprestimo" >
   <div class="input-group">
     <div class="input-group-prepend">
@@ -25,6 +25,8 @@
     <input type="date" id="date_fim" aria-label="Empréstimo" class="form-control" placeholder="">
 </div>
 </div>
+
+<button name="Buscar" id="buscar_relatorio" class="btn btn-secondary" type="submit">Buscar</button>
 
 </div>
  

@@ -47,7 +47,7 @@ class Usuario extends CI_Controller {
 
 		$this->load->view('template/header.php');
 		//$this->load->view('template/menu.php');
-		$this->load->view('usuario/login_usuario.php');
+		$this->load->view('estoque/listar.php');
 		$this->load->view('template/footer.php');
 
 	}
@@ -76,10 +76,7 @@ class Usuario extends CI_Controller {
 
 			$teste = $this->session->userdata('id_usuario');
 			$teste1 = $this->session->userdata('nome_usuario');
-			$this->load->view('template/header.php');
-			$this->load->view('template/menu.php');
-			$this->load->view('usuario/form_usuario.php');
-			$this->load->view('template/footer.php');
+			redirect('estoque/listar');
 		} else {
 			$this->load->view('template/header.php');
 			$this->load->view('usuario/login_usuario.php');
